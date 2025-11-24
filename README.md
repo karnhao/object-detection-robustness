@@ -50,7 +50,7 @@ After denoising, the cleaned images were tested again on all six detection model
 - DETR  
 
 This allows comparison between **original vs. denoised** image performance.
-
+![](autoencoder/model_layered_view.png)
 ---
 
 ## Cross-Weather Autoencoder
@@ -128,9 +128,26 @@ Includes pretrained weights for:
 - `autoencoder_snow_3.weights.h5`
 - `crossencoder_fog_rain_3.weights.h5`
 
-## Evaluation
+## Evaluation Pipeline
+**RUN**
+```
+evaluate.ipynb
+```
+This notebook will:
 
+- Execute evaluations for all models 
+- Compute precision, recall, F1-score 
+- Save results as JSON files for each experiment 
 
+After generating JSON results, run:
+```
+show_result.ipynb
+```
+This notebook will:
+
+- Load all JSON result files
+- Generate summary graphs
+- Export aggregated results to Excel(.xlsx) format
 
 ## File Structure
 
@@ -161,6 +178,11 @@ object-detection-robustness/
         ├── autoencoder_snow_3.weights.h5
         └── crossencoder_fog_rain_3.weights.h5
 ```
+
+## Research Report
+
+For a deeper dive into the methodology, findings, and detailed analysis, please refer to the full research report included in this repository.  
+You can read more in the [Research Report (PDF)](APA%20Format%20Research%20Report.pdf).
 
 ## License
 

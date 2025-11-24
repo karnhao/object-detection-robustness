@@ -2,6 +2,66 @@
 
 Analyzing the impact of image corruption on object detection model performance.
 
+
+## Introduction
+This project evaluates the robustness of six object detection models under various weather conditions and investigates how Autoencoder-based denoising can improve detection performance. The work is divided into **three main tasks**:
+
+---
+
+## Baseline Evaluation on NuImages
+The first task uses raw images from the **NuImages dataset** to compute the baseline performance of six object detection models:
+
+- Fast R-CNN
+- Faster R-CNN
+- Mask R-CNN
+- SSD
+- YOLO
+- DETR
+
+### **Metrics Computed**
+- Precision
+- Recall
+- F1-Score
+
+These scores serve as the benchmark before applying any denoising techniques.
+
+---
+
+## Autoencoder for Weather Denoising
+The second task involves building an **Autoencoder** to remove noise caused by different weather conditions.  
+The denoising model was designed to handle **8 types of weather**:
+
+1. Fog  
+2. Rain  
+3. Snow  
+4. Dark / Low Light  
+5. Sandstorm / Dust  
+6. Blur  
+7. Motion Blur  
+8. Heatwave Distortion  
+
+After denoising, the cleaned images were tested again on all six detection models:
+
+- Fast R-CNN  
+- Faster R-CNN  
+- Mask R-CNN  
+- SSD  
+- YOLO  
+- DETR  
+
+This allows comparison between **original vs. denoised** image performance.
+
+---
+
+## Cross-Weather Autoencoder
+The third task introduces a **Cross Autoencoder** capable of restoring images affected by **multiple overlapping weather conditions**.  
+Examples include:
+
+- Fog + Rain  
+
+The goal is to determine whether the Autoencoder can reconstruct multi-weather images effectively, and how this influences detection accuracy of the 6 models.
+
+
 ### Dataset
  - [NuImages](https://www.nuscenes.org/nuimages)
  - Locate in `data/sets/nuimages`
@@ -67,6 +127,10 @@ Includes pretrained weights for:
 - `autoencoder_rain_3.weights.h5`
 - `autoencoder_snow_3.weights.h5`
 - `crossencoder_fog_rain_3.weights.h5`
+
+## Evaluation
+
+
 
 ## File Structure
 
